@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block body %}
+    <h1>History List</h1>
+    {% if weathers %}
+        <table class="table table-striped" id="weathers">
+            <thead>
+            <tr>
+                <th>Lat</th>
+                <th>Lng</th>
+                <th>City</th>
+                <th>Time</th>
+                <th>Temp C&#186;</th>
+                <th>Clouds</th>
+                <th>Wind</th>
+                <th>Description</th>
+                <th>Lenght [km]</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for weather in weathers %}
+                <tr>
+                    <td>{{ weather.lat|number_format(2, ',', '.') }}</td>
+                    <td>{{ weather.lng|number_format(2, ',', '.') }}</td>
+                    <td>{{ weather.city }}</td>
+                    <td>{{ weather.dt is empty ? "" : weather.dt|date("F jS Y \\a\\t g:ia") }}</td>
+                    <td>{{ weather.temp  is empty ? "" : (weather.temp - 273.15)|round(1, 'ceil')|number_format(2, ',', '.') }}</td>
+                    <td>{{ weather.clouds }}</td>
+                    <td>{{ weather.wind|number_format(2, ',', '.') }}</td>
+                    <td>{{ weather.description }}</td>
+                    <td>{{ distance(weather.lat, weather.lng, app.request) }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="navigation">
+        {{ knp_pagination_render(weathers) }}
+        </div>
+    {% else %}
+        <p>no points</p>
+    {% endif %}
+    {{ include('inc/box.html.twig') }}
+{% endblock %}

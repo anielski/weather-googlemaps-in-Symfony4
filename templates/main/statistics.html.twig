@@ -1,0 +1,23 @@
+{% if min is not null or city is not null or (count is not null and count != 0) %}
+    <div class="card">
+        <div class="card-header">
+            Statistics
+        </div>
+        <div class="card-body">
+            {% if min is not null %}
+                <span class="badge badge-pill badge-primary">
+            Temperature:
+            (Min: {{ (min - 273.15)|round(1, 'ceil')|number_format(2, ',', '.') }}C&#186;
+            Max: {{ (max - 273.15)|round(1, 'ceil')|number_format(2, ',', '.') }}C&#186;
+            Avg: {{ (avg - 273.15)|round(1, 'ceil')|number_format(2, ',', '.') }}C&#186;)
+        </span>
+            {% endif %}
+            {% if city is not null %}
+                <span class="badge badge-pill badge-secondary">Most often city search: {{ city }}</span>
+            {% endif %}
+            {% if count is not null %}
+                <span class="badge badge-pill badge-danger">Number of searches: {{ count }}</span>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

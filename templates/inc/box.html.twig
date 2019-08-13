@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-lg-6" id="box">
+    </div>
+    <div class="col-lg-6">
+        {{ render(controller(
+            'App\\Controller\\MainController::statistics',
+            { 'max': 3 }
+        )) }}
+    </div>
+</div>
+<script>
+    /**
+     * Load actual wheatehr where you are.
+     * @author Adam Nielski
+     * @copyright Future-Soft Sp. z o.o.
+     * @type {boolean}
+     * @todo AN: move it to main.js! - but parse it before the key global variable substitutes.
+     * @todo AN: What if someone goes directly to the list? no current position for improvement
+     */
+    $j.cookie.json = true;
+    pos = $j.cookie("pos");
+    loadWeather(pos.lat, pos.lng, "{{ configOpenWeatherMapAppid }}", function (response) {
+        response.message = "In your town:";
+        $("#box_tmpl").tmpl(response).appendTo('div#box');
+    });
+</script>

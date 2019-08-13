@@ -1,0 +1,18 @@
+{% verbatim %}
+<script id="box_tmpl" type="text/html">
+{{if coord.lon }}
+    <div class="card">
+      <div class="card-header">
+        ${message} ${name} is ${weather[0].description} now.
+      </div>
+      <div class="card-body">
+            <span class="badge badge-pill badge-primary">Lon: ${coord.lon}</span>
+            <span class="badge badge-pill badge-secondary">Lat: ${coord.lat}</span>
+            <span class="badge badge-pill badge-danger">Temp: ${(main.temp - 273.15).toFixed(1)} C&#186;</span>
+            <span class="badge badge-pill badge-warning">Clouds: ${clouds.all}</span>
+            <span class="badge badge-pill badge-info">Wind: ${wind.speed}</span>
+      </div>
+    </div>
+{{/if}}
+</script>
+{% endverbatim %}
