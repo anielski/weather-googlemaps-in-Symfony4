@@ -20,10 +20,10 @@ function initMap() {
     $j.cookie.json = true;
     if ($j.cookie("pos")) {
         pos = $j.cookie("pos");
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
-                infoWindow.open(map);
-                map.setCenter(pos);
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        infoWindow.open(map);
+        map.setCenter(pos);
     } else {
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -57,16 +57,24 @@ function initMap() {
  * @copyright Future-Soft Sp. z o.o.
  */
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    $j.get("http://ip-api.com/json", function (response) {
-        var pos = {
-            lat: response.lat,
-            lng: response.lon
-        };
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        infoWindow.open(map);
-        map.setCenter(pos);
-    }, "jsonp");
+    $j.ajax({
+        url: "https://ipapi.co/json/",
+        crossDomain:true,
+        type:'GET',
+        contentType: "html",
+        //dataType: "jsonp",
+        success: function (response) {
+            var pos = {
+                lat: response.latitude,
+                lng: response.longitude
+            };
+            $j.cookie("pos", pos, {expires: 10});
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+        }
+    });
     // infoWindow.setPosition(pos);
     // infoWindow.setContent(browserHasGeolocation ?
     //     'Error: The Geolocation service failed.' :
@@ -80,7 +88,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
  * @author Adam Nielski
  * @copyright Future-Soft Sp. z o.o.
  */
-function save( resp ) {
+function save(resp) {
     setVisible('#loading', true);
     $j.ajax({
         url: "/save",
@@ -98,15 +106,15 @@ function save( resp ) {
         }),
         contentType: "application/json; charset=utf-8"
     })
-    .fail((jqXHR, textStatus) => {
-        $("#alert_tmpl").tmpl({style: "alert-danger", title: textStatus}).appendTo('div#flash');
-    })
-     .done((res) => {
+        .fail((jqXHR, textStatus) => {
+            $("#alert_tmpl").tmpl({style: "alert-danger", title: textStatus}).appendTo('div#flash');
+        })
+        .done((res) => {
             $("div#box").html("");
             resp.message = "Selected town: "
             $("#box_tmpl").tmpl(resp).appendTo('div#box');
-     })
-    .always(() => {
-        setVisible('#loading', false);
-    })
+        })
+        .always(() => {
+            setVisible('#loading', false);
+        })
 }

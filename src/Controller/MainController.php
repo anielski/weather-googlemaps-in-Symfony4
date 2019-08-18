@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Weather;
 use App\Form\WeatherType;
+use http\Env\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;

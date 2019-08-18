@@ -49,4 +49,5 @@
 
 {% block javascripts %}
     <script src="{{ asset('/js/main.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ configGoogleMapsApiKey }}&callback=initMap" async defer></script>
 {% endblock %}
