@@ -1,0 +1,65 @@
+/*page loading content*/
+body {
+    background: #FFF url("https://i.imgur.com/KheAuef.png") top left repeat-x;
+    font-family: 'Alex Brush', cursive !important;
+}
+
+#loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+    background-image: url("https://i.stack.imgur.com/MnyxU.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bd-example::after {
+    display: block;
+    clear: both;
+    content: "";
+
+}
+
+.bd-example-modal {
+    background-color: #fafafa;
+}
+
+.bd-example {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+}
+
+.bd-example {
+    position: relative;
+    padding: 1rem;
+    margin: 1rem -15px 0;
+    border: solid #f8f9fa;
+    border-width: .2rem 0 0;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.bd-example-modal .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 1;
+    display: block;
+}
+
+/*Google maps*/
+#map {
+    height: 400px;
+    width: 100%;
+}

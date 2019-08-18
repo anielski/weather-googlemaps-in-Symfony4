@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Main page
+{% endblock %}
+
+{% block body %}
+    <div class="page">
+        <div class="bs-docs-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bs-component">
+                        <div class="bd-example bd-example-modal">
+                            <div class="modal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div id="map"></div>
+                                        </div>
+                                        <div class="modal-footer" id="box">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Small modal -->
+    </div>
+    <script type="application/javascript">
+        /**
+         * An event after selecting a point on the map. Initiates the download of weather data and then saving to the server.
+         * @param latLng
+         * @param map
+         * @author Adam Nielski
+         * @copyright Future-Soft Sp. z o.o.
+         * @todo AN: move it to main.js! - but parse it before the key global variable substitutes.
+         */
+        function selectPointOnMapEvent(latLng, map) {
+            loadWeather(latLng.lat(), latLng.lng(), "{{ configOpenWeatherMapAppid }}", function ( response ) {
+                save(response);
+            });
+        }
+    </script>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('/js/main.js') }}"></script>
+{% endblock %}
