@@ -8,6 +8,7 @@
         "knplabs/knp-paginator-bundle": "^4.0",
         "php-http/curl-client": "^2.0",
         "sensio/framework-extra-bundle": "^5.4",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",

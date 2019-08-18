@@ -24,7 +24,7 @@ it download vendors, create database and run local server.
 ## Used
 * GoogleMap API
 * https://openweathermap.org/api
-* http://ip-api.com/json
+* https://ipapi.co/json/
 * https://bootswatch.com/cosmo/
 
 
