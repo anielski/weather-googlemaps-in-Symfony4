@@ -1,7 +1,8 @@
 # GeoMaps v1.0.0
 googlemaps + Symfony4 + weather
 
-##setup
+
+## Setup
 in config/packages/framework.yaml set
 <pre>
 parameters:
@@ -14,16 +15,18 @@ In .env change
 DATABASE_URL="(your connection to database)"
 </pre>
 
-##run
+
+## Run
 in shell type only: <pre>make run</pre>
 it download vendors, create database and run local server.
 
-##Used
 
+## Used
 * GoogleMap API
 * https://openweathermap.org/api
 * http://ip-api.com/json
 * https://bootswatch.com/cosmo/
+
 
 ## Bibliography
 * https://webkul.com/blog/how-to-get-parameters-value-in-controller-and-twig/
@@ -64,7 +67,8 @@ it download vendors, create database and run local server.
 * https://stackoverflow.com/questions/2995054/access-denied-for-user-rootlocalhost-using-passwordno
 * https://symfony.com/download
 
-##example
+
+## Example
 * https://api.openweathermap.org/data/2.5/weather?lat=22.72&lon=87.13&appid=<number>
 * https://openweathermap.org/current#geo
 * http://ip-api.com/json?callback=jQuery34105022509525573602_1565733097586&_=1565733097587
@@ -72,14 +76,14 @@ it download vendors, create database and run local server.
 * https://api.ipdata.co/?api-key=<your key>
 * http://jsfiddle.net/zK5FN/2/
 
-## I recommend for the future
 
+## I recommend for the future
 * Boudle and Service
 * https://codereviewvideos.com/course/beginners-guide-back-end-json-api-front-end-2018/video/healthcheck-raw-symfony-4
 * https://codereviewvideos.com/course/beginners-guide-back-end-json-api-front-end-2018/video/healthcheck-raw-symfony-4
 
-## License
 
+## License
 * Author: Adam Nielski
 * CopyRight: Future-Soft Sp. z o.o.
 * MIT License
